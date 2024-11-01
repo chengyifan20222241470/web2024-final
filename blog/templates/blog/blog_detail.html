@@ -1,0 +1,10 @@
+{% extends "blog/base.html" %}
+{% block title %}{{ blog.title }}{% endblock %}
+
+{% block content %}
+    <h2>{{ blog.title }}</h2>
+    <p>{{ blog.content|safe }}</p>
+    <small>Published on {{ blog.created_at }}</small>
+    <br><br>
+    <a href="{% url 'blog_list' %}">Back to Blog List</a>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+{% block title %}Blog List{% endblock %}
+
+{% block content %}
+    <!-- <h2>All Blogs</h2> -->
+    <!-- <a href="{% url 'blog_create' %}">Write a New Blog</a> -->
+    <ul>
+        {% for blog in blogs %}
+            <li>
+                <!-- <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a> -->
+                <a href="{% url 'blog_detail' blog.id %}" class="article-title">{{ blog.title }}</a>
+                <p class="article-date">发布时间: {{ blog.created_at }}</p>
+
+                <!-- <small>Published on {{ blog.created_at }}</small> -->
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

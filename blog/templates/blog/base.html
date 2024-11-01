@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}我的个人博客{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'blog/styles.css' %}">
+</head>
+<body>
+    <!-- 标题区域 -->
+    <div class="center">
+        <h1>我的个人博客</h1>
+        <ul class="navi">
+            <li><a href="javascript:history.back()" class="noafter back" title="后退"></a></li>
+            <li><a href="/" class="noafter home" title="主页"></a></li>
+            <li><a href="javascript:history.forward()" class="noafter forward" title="前进"></a></li>
+        </ul>
+    </div>
+    
+    <!-- 菜单区域 -->
+    <div class="center">
+        <ul class="menu">
+            <li><a href="{% url 'blog_list' %}">文章列表</a></li>
+            <li><a href="{% url 'blog_create' %}">写博客</a></li>
+            
+        </ul>
+    </div>
+
+    <!-- 页面内容 -->
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
+

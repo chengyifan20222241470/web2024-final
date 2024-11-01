@@ -1,0 +1,45 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Write a New Blog{% endblock %}
+
+{% block content %}
+    <h2>Write a New Blog</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        
+        <label for="content">Content (Markdown Supported):</label>
+        <textarea id="content" name="content" required></textarea>
+        
+        <button type="submit">Submit</button>
+    </form>
+    
+    <h3>Preview:</h3>
+    <div id="preview"></div>
+    
+    <a href="{% url 'blog_list' %}">Back to Blog List</a>
+    
+
+
+<!-- {% load static %} -->
+
+<!-- <script src="{% static 'blog/marked.min.js' %}"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/marked@2.1.3/marked.min.js"></script>
+
+<script>
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    function updatePreview() {
+        let content = document.getElementById("content").value;
+        let preview = document.getElementById("preview");
+        preview.innerHTML = marked(content);  
+    }
+
+    // 将 updatePreview 函数绑定到 textarea 的输入事件上
+    document.getElementById("content").addEventListener("input", updatePreview);
+});
+</script>
+
+{% endblock %}
